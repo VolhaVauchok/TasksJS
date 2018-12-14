@@ -1,0 +1,23 @@
+function distinct0(a) {
+  for(let i=0; i<a.length; i++) {
+    if (a.includes(a[i],i+1)) {
+      a.splice(a[i], a.includes(a[i]))
+    } 
+  }return a;
+}
+//----------------------------
+function distinct00(a) {
+  let newA =[];
+  for(let i=0; i<a.length; i++) {
+    if (a[i]!=a[i+1]){
+      newA.push(a[i])
+    }
+  }return newA;
+}
+//-------------------------------
+
+function distinct(a) {
+  return [...new Set(a)];
+}
+
+console.log(distinct([1, 1, 1, 2, 2, 2, 3, 4, 5]));
