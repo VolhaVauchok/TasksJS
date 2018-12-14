@@ -1,0 +1,25 @@
+
+function initializeNames1(name){
+  let str = name.split(" ");
+  let l =str.length;
+  let s = ''
+  if(l >2){
+    for(let i=1; i < l-1; i++){
+     s += str[i][0] +". ";
+    } 
+    return str[0]+" "+s+ str[l-1];
+    }else {return name;}
+  //return s
+}
+function initializeNames11(name){
+ var n = name.split(" ");
+if(n.length < 3) return name;
+for(i = 1; i < n.length-1; i++){
+  n[i] = n[i][0] + ".";
+}
+return n.join(" ");
+}
+function initializeNames(name){
+  return name.split(' ').map((e,i,a) => i == 0 || i == a.length-1 ? e : e[0]+'.').join(' ');
+}
+console.log(initializeNames('Alice Nkkdkk Njdjfd Ndsjjdfk Davis'));
