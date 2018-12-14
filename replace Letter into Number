@@ -1,0 +1,9 @@
+function vowelOne(s){
+  /*let str = s.replace(/[^aeiou]/gi, '0');
+  let strr = str.replace(/[^0]/gi, '1');*/
+  return s.replace(/[^aeiou]/gi, '0').replace(/[^0]/gi, '1');
+}
+console.log( vowelOne( "vowelOne one"));
+ s = (s.replace(/[^aeiou]/gi,'0')).replace(/[aeiou]/gi,'1');
+
+s.replace(/[^aeiou]/gi, '0').replace(/[^\d]/g, '1');
