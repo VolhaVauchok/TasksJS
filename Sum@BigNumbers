@@ -1,0 +1,462 @@
+/*const a = '9299';
+const b = '9298';
+
+function sumBigNumber(a, b) {
+  let sArr = [];
+  let c = 0;
+  let aArr = a.split('').map(el => +el);
+  let bArr = b.split('').map(el => +el);
+  
+  for (let i = aArr.length - 1; i >= 0; i--) {
+    sArr[i] = aArr[i] + bArr[i] + c; 
+    if (sArr[i] > 9) {
+      sArr[i] = sArr[i] - 10;
+      c = 1;
+     }
+    else c = 0;
+  }
+  return (c ? 1 : '') + sArr.join('')
+}
+
+console.log(sumBigNumber(a, b));*/
+
+/*const a = '0001350';
+const b = '0001112';
+
+
+function sumBigNumber(a, b) {
+  let res = '';
+  let c = 0;
+  let l = 0;
+  let rr = '';
+  if (a.length > b.length) {
+    l = a.length;
+    b = '0'.repeat(a.length - b.length)+ b;
+    console.log(b)
+  }
+  else {
+    l = b.length;
+    a = '0'.repeat(b.length - a.length)+ a;
+  }
+  for (let i = l - 1; i >= 0; i--) {
+    let s = +a[i] + +b[i] + c; 
+    c = s > 9;
+    res = s.toString()[+c] + res;
+  }
+  let ress =  (c ? 1 : '') + res;
+  return ress.replace(/^0+/, '');
+  
+}
+
+console.log(sumBigNumber(a, b));*/
+
+
+
+/*function sumBigNumber(a, b) {
+  let res = '';
+  let c = 0;
+ 
+  for (let i = a.length - 1; i >= 0; i--) {
+    let s = +a[i] + +b[i] + c; 
+    res = (s+'')[+(c = s > 9)] + res;
+  }
+  return (c ? 1 : '') + res
+}
+
+console.log(sumBigNumber(a, b));*/
+
+
+function checkThreeAndTwo(array) {
+  aSum = 0;
+  bSum = 0;
+  cSum = 0;
+  for (let i = 0; i <5 ; i++) {
+    if (array[i] == 'a') {
+      aSum++;
+      if (aSum >3) return false;
+    }
+    else if (array[i] == 'b') {
+      bSum++;
+      if (bSum > 3) return false;
+    }
+    else if (array[i] == 'c') { 
+      cSum++;
+      if (cSum > 3) return false;
+    }
+  }
+  
+  return ((aSum + bSum ==5 ) || (aSum + cSum == 5) || (bSum + cSum == 5) );
+  
+}
+console.log(checkThreeAndTwo(["a", "b", "b", "b", "b"]))
+
+
+function spEng(sentence){
+  return sentence.toLowerCase().includes('english');
+}
+
+console.log(spEng('lkDSFenglishGHHJlfj'));
+
+
+
+
+function numberToString(num) {
+  return num.toString();
+}
+
+console.log(numberToString(67));
+
+function countSheeps(array1) {
+  let s = 0;
+  for (let i=0; i < array1.length; i++) {
+    if (array1[i] == true) {
+      s++;
+    }
+  }
+  return s;
+}
+var array1 = [true,  true,  true,  false,
+              true,  true,  true,  true ];
+console.log(countSheeps(array1));
+
+
+
+function getIssuer(number) {
+  let str = number.toString();console.log(str);
+  if (str.lenghth == 15 || str.slice(0,2) == 34 || str.slice(0,2) == 37) {
+    return "AMEX";
+  }
+  else if (str.lenghth == 13 || str[0] == 4) {
+    return "VISA";
+  }
+  else if (str.lenghth == 16 && str.slice(0,4) == 6011) {
+      return "Discover";
+  }
+  else if (str.lenghth == 16 && str.slice(0,2) == 51 
+      || str.slice(0,2) == 52 
+      || str.slice(0,2) == 53 
+      || str.slice(0,2) == 54 
+      || str.slice(0,2) == 55) {
+      return "Mastercard";
+  }
+  else {
+    return "Unknown";
+  }
+  
+}
+
+console.log(getIssuer(4111111111111111));
+
+function binToDec(bin){
+  return +('0b'+bin);
+}
+
+function binToDec(bin){
+  let res = 0, p = 1;
+  for (let i = bin.length - 1; i >= 0; i--, p*=2) {
+    /*if (+bin[i]) { 
+      res += p;
+    }*/
+    res += p*bin[i]
+  }
+  return res;
+}
+console.log(binToDec("1001001"));
+
+/*function solve(eq){
+  let newStr = '';
+  for (let i = eq.length - 1; i >= 0; i--) {
+    newStr += eq[i]; console.log(newStr)
+  }
+  return newStr;
+}
+  
+console.log(solve("100*b/y"));*/
+
+function solve(eq){
+
+}
+console.log(solve("100*b/y+95"));
+
+function solve(eq){
+    return eq.match(/(\w+(?=[\+\-\*\/])?|[\+\-\*\/])/g).reverse().join('');
+}
+
+
+
+
+
+
+
+/*function validBraces(braces) {
+  
+  const a = '()'; 
+  const b = '[]';
+  const c = '{}';
+  let newS = '';
+  
+  for (let i = 0; i < braces.length; i++) {
+    if (braces[i] == a[1]) {
+      if (newS[newS.length-1] == a[0]) {
+        newS = newS.slice(0,-1); 
+      }
+      else return false;
+    }
+    else if (braces[i] == b[1]) {
+      if (newS[newS.length-1] == b[0]) {
+        newS = newS.slice(0,-1);
+      }
+      else return false;
+    }
+    else if (braces[i] == c[1]) {
+      if (newS[newS.length-1] == c[0]) {
+        newS = newS.slice(0,-1);
+      }
+      else return false;
+    }
+    else newS += braces[i];
+  }
+  return newS == '';
+}
+
+console.log(validBraces( "}}") );*/
+
+/*function validBraces(braces) {
+  
+  const o = '([{'; 
+  const c = ')]}';
+ 
+  let newS = '';
+  
+  for (let i = 0; i < braces.length; i++) {
+    let pos = c.indexOf(braces[i]);
+    
+    if (pos >= 0)  {
+      if (newS[newS.length - 1] == o[pos]) {
+        newS = newS.slice(0,-1);
+      }
+      else return false; 
+       
+    }
+    else newS += braces[i];
+
+  }
+  console.log(newS);
+  return newS == '';
+  
+}
+
+console.log(validBraces("((())"));
+
+function differenceOfSquares(n) {
+  let sum = (1 + n) * n / 2;
+  sum *= sum;
+  let sumSqr2 = 1;
+  for (let i=2; i<=n; i++) {
+    sumSqr2 += i*i;
+  }
+  return sum - sumSqr2;
+}
+console.log(differenceOfSquares(6))
+
+const mergeArrays = (arr1, arr2) => 
+  arr1.concat(arr2).
+  sort((a, b) => a - b).
+  reduce((arr,el) => el != arr[arr.length-1] ? arr.concat([el]) : arr, []);
+
+
+console.log(mergeArrays([0,0,3,9], [-1,6,7,2]));*/
+
+/*const sortArr = (arr) => arr.sort((a, b) => a - b);
+
+console.log(sortArr([10,0,3,9]));*/
+
+
+/*function multiArr(arr) {
+  
+   let result = [].concat(...arr);
+   result = [].concat(...result);
+   console.log(result);
+   return result.length;
+}
+console.log(multiArr(['f',['j',[1,[1,2],1]],true,1,[2,[2,3],6],4,5,"1,2,3"]));*/
+
+
+/*let c = {
+  'NY':['LA', 'IL'],
+  'LA':['SF'], 
+  'SF':["NJ", 'IL'],
+  'IL':['OR']
+}
+
+function road(des, map) {
+  let res = [];
+  res.push(des);
+  if(map[des] == undefined) {
+    return 'No dist';
+  }
+  map[des].forEach(el=> {
+    res.push(el);
+    r(el, map);
+  });
+  
+  function r(des, map) {
+    if (map[des]) {
+      res.push(map[des]);
+      r(map[des], map);
+    
+    }
+    else return 'No dist';
+  }
+  return res.toString().split(',');
+}
+console.log(road('FF', c));*/
+
+
+
+/*console.log(fib(0, 1, 7));
+
+function fib(a,b,n) {
+    return n ? fib(b, a + b, n - 1) : a;
+}*/
+
+/*var findDigit = function(num, nth){
+  num = Math.abs(num); console.log (num)
+  let a = '';
+ if (nth <= 0 ) return  -1;
+ else {
+   a = num.toString();console.log(a)
+   return a.length >= nth ? +a[a.length-nth] : 0;
+  }
+}
+
+console.log(findDigit(-456, 4) );*/
+
+/*var findDigit = function(num, nth){
+  num = Math.abs(num); 
+  //let a = '';
+ if (nth <= 0 ) return  -1;
+ else {
+   return num.toString().length >= nth ? +num.toString()[num.toString().length-nth] : 0;
+  }
+}
+console.log(findDigit(-456, 4) );*/
+
+/*function solve(arr){ 
+  let res = new Array(arr.length).fill(0);
+  const startChar = 'a'.charCodeAt(0);
+  //arr = arr.toString().toLowerCase().split(',');
+  for (let i = 0; i < arr.length; i++){
+    //res[i] = 0;
+    for (let j = 0; j < arr[i].length; j++){
+      if (j == (arr[i].toLowerCase().charCodeAt(j) - startChar)) {
+        res[i] ++; 
+      }
+    }
+    
+  }
+  return res;
+}*/
+
+
+//console.log(solve(["abode","ABc","xyzD"]));
+
+/*function solve(arr){ 
+  const startChar = 'a'.charCodeAt(0);
+  return arr.map(word => word.toLowerCase().split('').
+             filter((letter, ind) => (ind === letter.charCodeAt(0) - startChar)).length)
+}
+console.log(solve(["abode","ABc","xyzD"]));  
+
+  
+function solve(arr){ 
+  const startChar = 'a'.charCodeAt(0);
+  console.log(arr)
+  return arr.map(word => word.split('').
+      reduce((res, letter, ind) => ind == letter.toLowerCase().charCodeAt(0) - startChar ? res ++: res, 0))
+}
+console.log('kkkl')
+console.log(solve(["abode","ABc","xyzD"]));*/
+
+/*function explode(s) {
+  let str  =''
+  for (let i=0; i< s.length; i++) {
+    str += s[i].repeat(s[i])
+  }
+  return str
+}
+console.log(explode('213'));
+
+function numberJoy(n) {
+    let s = '';
+    let aR = 0;
+    s = n.toString().split('').map(el => el++).reduce((acc, sum) => acc +sum);
+    //s = s.split('');
+    //s = s.map(el => el++); console.log(s);
+    //a = s.reduce((acc, sum) => acc +sum); console.log(a);
+    aR = s.toString().split('').reverse().join(''); console.log(aR)
+   // aR = +aR; console.log(aR)
+    return s*(+aR) === n;
+  
+}
+
+console.log(numberJoy(12));
+
+function remove(s){
+  return s.replace(/\!/,'')
+}
+
+console.log(remove('hi!!! hi!'));
+
+function initializeNames(name){
+  let a  = [];
+  let aa = ''
+  a = name.split(' '); //console.log(a)
+  if (a.length == 1 || a.length== 2) return name;
+  else {
+    for (i =1; i < a.length - 1; i++) {
+      aa += a[i][0] + '. ';
+    }
+   return a[0] +' '+ aa + a[a.length - 1];
+  }
+  
+}
+
+console.log(initializeNames('John Viciti Vkkl Davis'));*/
+
+/*function arithmeticSequenceElements(a,r,n) {
+ let str = [a];
+  
+  for (i = 1; i <n; i++) {
+    a = a + r; 
+    str.push(a);
+  }
+ return str.join(', ')
+}
+
+console.log(arithmeticSequenceElements(1, 2, 5));
+
+function arithmeticSequenceElementsR(a,r,n) {
+  if (n) {
+    return a+", "+arithmeticSequenceElementsR(a + r, r, n - 1)
+  }
+  else return a;
+}
+console.log(arithmeticSequenceElementsR(100, -10, 10));
+
+const arithmeticSequenceElementsRC = (a, r, n) => 
+        n ? a+", "+arithmeticSequenceElementsR(a + r, r, n - 1) : a;
+
+console.log(arithmeticSequenceElementsRC(100, -10, 10));*/
+
+function checkThreeAndTwo(array) {
+  let ca = 0; 
+  let cb = 0;
+  let cc = 0;
+  for ( i = 0; i < array.length; i++) {
+    if(array[i] == "a" ? ca++ : array[i] == "b" ? cb++ : cc++);
+  }
+  return (ca ==2||ca ==3 || ca ==0) && (cb == 2||cb ==3|| cb == 0) && (cc ==2 || cc ==3 ||cc ==0)
+    
+}
+console.log(checkThreeAndTwo(["a", "a", "c", "b", "b"]));
