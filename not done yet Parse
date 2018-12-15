@@ -1,0 +1,8 @@
+fetch("https://www.google.com/search?q=js+methds").then((response)=> response.text())
+    .then((text)=> {let p = new DOMParser(); let d = p.parseFromString(text, "text/html"); let s = d.getElementById("ires"); let tName = s.getElementsByTagName("div")[0].getElementsByTagName("div")[0].getElementsByTagName("div")[0].getElementsByTagName("div")[0].getElementsByTagName("div")[0].getElementsByTagName("div")[0].getElementsByTagName("div")[0]; let ah = tName.getElementsByTagName("a")[0]; console.log(ah.href)})
+    .catch((err)=> {console.log("error:" + err)})
+
+
+          
+          
+ 
