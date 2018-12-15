@@ -1,0 +1,91 @@
+//-------------------------значения из 2х массивов без дубликатов
+function diffArrayUnic(arr1, arr2) {
+  var newArr = [];
+  let arr3 = arr1.concat(arr2);
+  
+  arr3.sort();
+  console.log(arr3);
+  for (let i = arr3.length - 1; i > 0; i--) {
+    if (arr3[i] == arr3[i - 1]) arr3.splice( i, 1);
+  }
+  console.log(arr3);
+}
+
+console.log(diffArrayUnic([1, 2, 3, 6], [1, 2, 3, 4, 5]));
+
+//-----------------------найти не повторяющиеся в 2х массивах элементы; 1 вариант
+function diffArray(arr1, arr2) {
+  var newArr = [];
+  let arr3 = arr1.concat(arr2);
+  arr3.sort();
+  for (let i =0; i < arr3.length; i++) {
+    if (arr3[i] == arr3[i+1]) arr3.splice(i,1)
+    else newArr.push(arr3[i])
+    }
+    return  newArr
+}
+
+console.log(diffArray([1, 2, 3, 6], [1, 2, 3, 4, 5]));
+
+//-----------------------2 вариант более медленный
+function diffArray2(arr1, arr2) {
+  return arr1.concat(arr2)
+  .sort()
+  .filter((el, i, arr) => (el != arr[i+1] && el != arr[i-1]));
+}                  
+
+console.log(diffArray2([1, 2, 3, 6], [1, 2, 3, 4, 5]));
+//-------------------------3 вариант медленный
+const diffArray3 = (arr1, arr2) => arr1.concat(arr2).sort()
+         .filter((el, i, arr) => (el != arr[i+1] && el != arr[i-1]));
+               
+
+console.log(diffArray3([1, 2, 3, 6], [1, 2, 3, 4, 5]));
+//------------------через hash table
+const diffArrayX = (arr1, arr2) => {
+  let obj = {}
+  let ar=[];
+  //for (let i=0,l=arr1.length;i<l;i++) obj[arr1[i]]=0;
+  //arr1.forEach(el => obj[el]=0);
+  obj = arr1.reduce((acc,el) => ({...acc, [el]:1}), {});
+  obj = arr2.reduce((acc,el) => { 
+    if (acc[el]) delete acc[el];
+    else acc[el]=1
+    return acc
+  }, obj);
+  //obj=Object.keys(obj).map(el=>+el);
+  
+  for(let el in obj) ar.push(+el);
+  return ar
+}
+
+console.log(diffArrayX([1, 2, 3, 6], [1, 2, 3, 4, 5]));
+
+
+const diffArrayX1 = (arr1, arr2) => {
+  let obj = {}
+  let ar=[];
+  //for (let i=0,l=arr1.length;i<l;i++) obj[arr1[i]]=0;
+  //arr1.forEach(el => obj[el]=0);
+  obj = arr1.reduce((acc,el) => ({...acc, [el]:1}), {});
+  obj = arr2.reduce((acc,el) => { 
+    if (acc[el]) delete acc[el];
+    else ar.push(el)
+    return acc
+  }, obj);
+  
+  for(let el in obj) ar.push(+el);
+  return ar
+}
+
+console.log(diffArrayX1([1, 2, 3, 6], [1, 2, 3, 4, 5]));
+
+
+const diffArrayX2 = (arr1, arr2) => {
+  let obj = arr1.reduce((acc,el) => ({...acc, [el]:1}), {});
+  let ar = arr2.filter(el => obj[el] ? !(delete obj[el]) : 1);
+  for(let el in obj) ar.push(+el);
+  return ar;
+}
+
+console.log(diffArrayX2([1, 2, 3, 6], [1, 2, 3, 4, 5]));
