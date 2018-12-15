@@ -1,0 +1,34 @@
+//посчитать колво 1 в бинарном представлении кода
+var countBits1 = function(n) {
+  let s = 0;
+  while (n){
+    if(n%2 !==0){ 
+     s +=1;
+    }
+    n =n/2|0;
+  }
+  return s;
+};*/
+
+
+//побитовые операции
+var countBits = function(n) {
+   let c =0;
+   while(n){
+    c += n%2;//n&1
+    n = n>>1;
+  }
+  return c;
+}
+
+console.log(countBits(7));
+
+
+function countBits(n) {
+  for(let c=0;n;n>>=1) c+=n&1
+  return c;
+}
+
+function fakeBin(x) {
+  return x.replace(/\d/g, d => d < 5 ? 0 : 1);
+}
