@@ -1,0 +1,14 @@
+function findShort(s){
+  let ss = s.split(" ");
+  let ssMin = ss[0].length;
+  for(let i = 1; i < ss.length; i++){
+    if(ss[i].length < ssMin) {
+      ssMin = ss[i].length;
+    }
+  }
+  return ssMin;
+}
+
+function findShort(s){
+    return Math.min(...s.split(" ").map (s => s.length));
+}
