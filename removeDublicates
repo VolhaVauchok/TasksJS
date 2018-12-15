@@ -1,4 +1,4 @@
-//-------------------------значения из 2х массивов без дубликатов
+//-------------------------значения из 2х массивов без дубликатов===========> look at the bottom
 function diffArrayUnic(arr1, arr2) {
   var newArr = [];
   let arr3 = arr1.concat(arr2);
@@ -89,3 +89,20 @@ const diffArrayX2 = (arr1, arr2) => {
 }
 
 console.log(diffArrayX2([1, 2, 3, 6], [1, 2, 3, 4, 5]));
+===============Solution from JS book(ru)=======================
+function unique(arr) {
+  var obj = {};
+
+  for (var i = 0; i < arr.length; i++) {
+    var str = arr[i];
+    obj[str] = true; // запомнить строку в виде свойства объекта
+  }
+
+  return Object.keys(obj); // или собрать ключи перебором для IE8-
+}
+
+var strings = ["кришна", "кришна", "харе", "харе",
+  "харе", "харе", "кришна", "кришна", "8-()"
+];
+
+alert( unique(strings) ); // кришна, харе, 8-()
