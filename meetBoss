@@ -1,0 +1,21 @@
+function outed(meet, boss){
+  
+  if(meet[boss] !== undefined ) { 
+    if(meet[boss]*2 >5) return 'Nice Work Champ!';
+    else return 'Get Out Now!';
+  }
+  else{
+    let countMem = 0;
+    let countScore =0;
+    for( let member in meet){
+      countMem +=1;
+      countScore += meet[member];
+    }
+    if(countScore/countMem > 5) return 'Nice Work Champ!';
+    else return 'Get Out Now!';
+    }
+  
+}
+console.log(outed({'tim':0, 'jim':2, 'randy':0, 'sandy':7,
+                   'katie':5, 'laura':1, 'saajid':2,
+                   'alex':3, 'john':2, 'mr':0}, 'laura'));
