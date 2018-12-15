@@ -1,2 +1,2 @@
 # TasksJS
-Solution for JS Tasks
+Solution for JS Tasks from Codewars and ...
