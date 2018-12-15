@@ -1,0 +1,39 @@
+//Oxana Jack Array
+
+function addOne(arr){
+  /*let res ='';
+  res = arr.join('');
+  res = 1 + +res + ""; 
+  console.log(res);
+  res = res.split('');
+  let nArr = res.map((el) => +el);
+ 
+  console.log(nArr);*/
+  return (1 + +arr.join('') + '').split('').map((el) => +el);
+}
+console.log(addOne([1,2,9,9,9]));
+
+function addOne1(arr){
+  let res ='';
+  let nArr =[];
+  res = arr.join('');
+  res = 1 + +res + ""; 
+  console.log(res);
+  for (let el of res){
+    nArr.push(+el);
+  }
+ 
+ console.log(nArr);
+}
+console.log(addOne1([1,2,9]));
+
+function addOne1(arr){
+ let i;
+ for (i = arr.length - 1; i>=0 ;i--){
+   if(arr[i]++ !=9) {break;}
+   arr[i] = 0;
+ }
+  if(arr[++i] == 0) arr.unshift(1);
+  return arr;
+}
+console.log(addOne1([2,9,9,9]));
