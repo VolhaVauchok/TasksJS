@@ -1,0 +1,32 @@
+/*К нам приходит неизвестаня строка. Нужно получить самую длинную субстроку, которая содержит
+2 уникальных символа.
+
+Например приходит "asssjdfnnnvvvvllfffaavvs"
+Результатом должно быть: "nnnvvvv" так как тут есть два уникальных символа
+при этом она самая длинная. (
+const s = 'aasssjdfnnnvvvvllfffaavvs';*/
+
+let p1 = s[0];
+let p2 = '';
+
+let res = '';
+
+for (let i = 1; i < s.length; i++) {
+  if (p1 && !p2) {
+    if (s[i] === p1[p1.length - 1]) {
+      p1 += s[i];
+    } else {
+      p2 = s[i];
+    }
+  } else {
+    if (s[i] === p2[p2.length - 1]) {
+      p2 += s[i];
+    } else {
+      if ((p1 + p2).length > res.length) res = p1 + p2;
+      p1 = p2;
+      p2 = s[i];
+    }
+  }
+}
+
+console.log(res);
