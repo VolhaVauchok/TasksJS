@@ -1,0 +1,6 @@
+function convert(x) {
+  let s=''; 
+  for(let y=1; y<=x; y<<=1) 
+     s=+!!(x&y) + s; 
+   return s;
+}
