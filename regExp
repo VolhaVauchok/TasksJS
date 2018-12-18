@@ -1,0 +1,11 @@
+//using RegExp to count Upper or Lower case letter
+function solve(s){
+    let lower=s.match(/[a-z]/g);
+  
+    if (lower.length<(s.length/2)) {
+      return s.toUpperCase();
+    } else { 
+      return s.toLowerCase()
+    }
+  
+}
