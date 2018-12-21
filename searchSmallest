@@ -1,0 +1,33 @@
+//Given an array of integers that are cyclically sorted, return the index of the smallest element in the array.
+
+//The array is considered cyclically sorted as it is possible to cyclically shift its entries so that it becomes sorted.
+
+//Assume that all elements are distinct.
+function searchSmallest (numbers) {
+ let left = 0;
+ let right = numbers.length - 1;
+ let middle = 0;
+
+ while (left < right) {
+   middle = Math.floor((left + right)/2);
+
+   // case like [4, 5, 6, 1, 2]
+   if (middle < right && numbers[middle + 1] < numbers[middle]) {
+     return middle + 1;
+   }
+
+   // case like [6, 7, 1, 4, 5]
+   if (middle > left && numbers[middle] < numbers[middle - 1]) {
+     return middle;
+   }
+
+   if (numbers[right] < numbers[middle]) {
+     // case like [4, 5, 6, 7, 1, 2]
+     left = middle + 1;
+   } else {
+     // case like [1,2,4, 5, 6, 7, 8,9]
+     right = middle - 1;
+   }
+ }
+
+console.log(searchSmallest([7,8,9,10,11,1,2]));
