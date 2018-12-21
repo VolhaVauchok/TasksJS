@@ -1,1 +1,30 @@
-solution should be here
+*******
+function mergeTwoSortedArrays(arrA, arrB) {
+  // your code here
+  let l = arrA.length,
+    i = l - 1,
+    m = arrB.length,
+    j = m - 1,
+    writeIndex = l + m - 1;
+
+  while (i >= 0 && j >= 0) {
+    if (arrA[i] <= arrB[j]) {
+      arrA[writeIndex] = arrB[j];
+      j--;
+    } else {
+      arrA[writeIndex] = arrA[i];
+      i--;
+    }
+
+    writeIndex--;
+  }
+
+  while (j >= 0) {
+    arrA[writeIndex] = arrB[j];
+    j--;
+    writeIndex--;
+  }
+
+  return arrA;
+}
+
