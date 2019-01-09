@@ -1,0 +1,24 @@
+function findNearestRepetition(strings) {
+ let wordToLatestIndex = {};
+ let nearestRepeatedDistance = Number.MAX_VALUE;
+ let currentWord = "";
+
+ for (let i = 0, l = strings.length; i < l; i++) {
+   currentWord = strings[i];
+
+   if (wordToLatestIndex.hasOwnProperty(currentWord)) {
+     let latestEqualWordIndex = wordToLatestIndex[currentWord];
+     console.log(wordToLatestIndex[currentWord]);
+    
+     nearestRepeatedDistance = Math.min(nearestRepeatedDistance,
+       i - latestEqualWordIndex);
+   }
+
+   wordToLatestIndex[currentWord] = i;
+ }
+
+ return nearestRepeatedDistance === Number.MAX_VALUE ? -1 : nearestRepeatedDistance;
+}
+
+console.log(findNearestRepetition(["Work", "hard", "delay", "gratification", 'Work', "no","goal", "makes","no", "for",
+"achievement"]));
